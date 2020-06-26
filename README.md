@@ -10,7 +10,7 @@ And add this import to your file.
 import 'package:cool_stepper/cool_stepper.dart';
 
 ## Screenshots
-<img src="screenshots/1.png" width="250"/> <img src="screenshots/2.png" width="250"/>  
+<img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>  
 
 ### Example
 
