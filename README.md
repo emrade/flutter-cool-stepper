@@ -21,6 +21,7 @@ CoolStepper(
        CoolStep(
         title: "Basic Information",
         subtitle: "Please fill some of the basic information to get started",
+        content: Container()
        ),
    ],
 );
