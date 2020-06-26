@@ -35,12 +35,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
   String selectedRole = "Writer";
-  TextEditingController _nameCtrl = TextEditingController(
-    text: "Emmanuel Fache",
-  );
-  TextEditingController _emailCtrl = TextEditingController(
-    text: "emrade95@gmail.com",
-  );
+  TextEditingController _nameCtrl = TextEditingController();
+  TextEditingController _emailCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               _buildTextField(
-                  labelText: "Name",
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return "Name is required";
-                    }
-                    return null;
-                  },
-                  controller: _nameCtrl),
+                labelText: "Name",
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Name is required";
+                  }
+                  return null;
+                },
+                controller: _nameCtrl,
+              ),
               _buildTextField(
                 labelText: "Email Address",
                 validator: (value) {
@@ -153,7 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 0,
           ),
           borderRadius: BorderRadius.circular(8.0),
-
         ),
         child: RadioListTile(
           value: name,

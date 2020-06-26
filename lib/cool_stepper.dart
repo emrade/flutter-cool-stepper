@@ -65,7 +65,7 @@ class _CoolStepperState extends State<CoolStepper> {
       }
     } else {
       // Do Nothing
-    } 
+    }
   }
 
   onStepBack() {

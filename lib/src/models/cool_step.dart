@@ -10,6 +10,6 @@ class CoolStep {
     @required this.title,
     @required this.subtitle,
     @required this.content,
-    @required this.validation
+    @required this.validation,
   });
 }
