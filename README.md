@@ -10,7 +10,7 @@ And add this import to your file.
 import 'package:cool_stepper/cool_stepper.dart';
 
 ## Image
-![Screenshot  1](screenshots/1.png) ![Screenshot  2](screenshots/2.png)
+![Screenshot  1](screenshots/1.png){ width=250px } ![Screenshot  2](screenshots/2.png){ width=250px }
 
 ### Example
 
