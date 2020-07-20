@@ -25,7 +25,7 @@ class CoolStepperConfig {
   final Color headerColor;
 
   /// This is the color of the icon
-  /// 
+  ///
   /// [This does not apply when icon is set]
   final Color iconColor;
 
@@ -37,8 +37,6 @@ class CoolStepperConfig {
 
   /// This is the textStyle for the subtitle text
   final TextStyle subtitleTextStyle;
-
-  
 
   const CoolStepperConfig({
     this.backText,

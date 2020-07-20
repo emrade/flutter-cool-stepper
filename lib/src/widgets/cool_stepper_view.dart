@@ -49,24 +49,24 @@ class CoolStepperView extends StatelessWidget {
               ),
               SizedBox(width: 5.0),
               Visibility(
-                visible: config.icon == null,
-                child: Icon(
-                  Icons.help_outline,
-                  size: 18,
-                  color: config.iconColor ?? Colors.black38,
-                ),
-                replacement: config.icon ?? Container()
-              )
+                  visible: config.icon == null,
+                  child: Icon(
+                    Icons.help_outline,
+                    size: 18,
+                    color: config.iconColor ?? Colors.black38,
+                  ),
+                  replacement: config.icon ?? Container())
             ],
           ),
           SizedBox(height: 5.0),
           Text(
             step.subtitle,
-            style: config.subtitleTextStyle ?? TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
+            style: config.subtitleTextStyle ??
+                TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
           )
         ],
       ),
