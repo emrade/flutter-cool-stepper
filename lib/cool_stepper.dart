@@ -1,8 +1,10 @@
 library cool_stepper;
 
 export 'package:cool_stepper/src/models/cool_step.dart';
+export 'package:cool_stepper/src/models/cool_stepper_config.dart';
 
 import 'package:cool_stepper/src/models/cool_step.dart';
+import 'package:cool_stepper/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +13,19 @@ class CoolStepper extends StatefulWidget {
   final List<CoolStep> steps;
   final VoidCallback onCompleted;
   final EdgeInsetsGeometry contentPadding;
+  final CoolStepperConfig config;
 
   const CoolStepper({
     Key key,
     @required this.steps,
     @required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
+    this.config = const CoolStepperConfig(
+      backText: "BACK",
+      nextText: "NEXT",
+      stepText: "STEP",
+      ofText: "OF",
+    ),
   }) : super(key: key);
 
   @override
@@ -87,6 +96,7 @@ class _CoolStepperState extends State<CoolStepper> {
           return CoolStepperView(
             step: step,
             contentPadding: widget.contentPadding,
+            config: widget.config,
           );
         }).toList(),
       ),
@@ -94,7 +104,7 @@ class _CoolStepperState extends State<CoolStepper> {
 
     final counter = Container(
       child: Text(
-        "STEP ${currentStep + 1} OF ${widget.steps.length}",
+        "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -108,7 +118,7 @@ class _CoolStepperState extends State<CoolStepper> {
           FlatButton(
             onPressed: onStepBack,
             child: Text(
-              "BACK",
+              widget.config.backText ?? "BACK",
               style: TextStyle(color: Colors.grey),
             ),
           ),
@@ -116,7 +126,7 @@ class _CoolStepperState extends State<CoolStepper> {
           FlatButton(
             onPressed: onStepNext,
             child: Text(
-              "NEXT",
+              widget.config.nextText ?? "NEXT",
               style: TextStyle(
                 color: Colors.green,
               ),

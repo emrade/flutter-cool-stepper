@@ -1,3 +1,6 @@
+## [1.1.0] - 20/07/2020
+* Added 'config' property to CoolStepper [Helps to customize stepper]
+
 ## [1.0.0+2] - 26/06/2020
 * Updated CHANGELOG
 

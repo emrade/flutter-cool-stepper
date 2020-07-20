@@ -103,8 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     final stepper = CoolStepper(
-      onCompleted: () {},
+      onCompleted: () {
+        print("Steps completed!");
+      },
       steps: steps,
+      config: CoolStepperConfig(
+        backText: "PREV",
+      ),
     );
 
     return Scaffold(
