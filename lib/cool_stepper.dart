@@ -21,11 +21,7 @@ class CoolStepper extends StatefulWidget {
     @required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
     this.config = const CoolStepperConfig(
-      backText: "BACK",
-      nextText: "NEXT",
-      stepText: "STEP",
-      ofText: "OF",
-    ),
+        backText: "PREV", nextText: "NEXT", stepText: "STEP", ofText: "OF", finalText: "FINISH", progLabels: null),
   }) : super(key: key);
 
   @override
@@ -111,6 +107,35 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
+    String getNextLabel() {
+      String nextLabel;
+      if (widget.config.progLabels != null) {
+        if (_isLast(currentStep)) {
+          nextLabel = widget.config.finalText ?? 'FINISH';
+        } else {
+          nextLabel = widget.config.progLabels[currentStep + 1];
+        }
+      } else {
+        nextLabel = widget.config.nextText ?? 'NEXT';
+      }
+      return nextLabel;
+    }
+
+    String getPrevLabel() {
+      String backLabel;
+      if (widget.config.progLabels != null) {
+        if (_isFirst(currentStep)) {
+          backLabel = '';
+        } else {
+          backLabel = widget.config.progLabels[currentStep - 1];
+        }
+      } else {
+        backLabel = widget.config.backText ?? 'PREV';
+      }
+
+      return backLabel;
+    }
+
     final buttons = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +143,7 @@ class _CoolStepperState extends State<CoolStepper> {
           FlatButton(
             onPressed: onStepBack,
             child: Text(
-              widget.config.backText ?? "BACK",
+              getPrevLabel(),
               style: TextStyle(color: Colors.grey),
             ),
           ),
@@ -126,7 +151,7 @@ class _CoolStepperState extends State<CoolStepper> {
           FlatButton(
             onPressed: onStepNext,
             child: Text(
-              widget.config.nextText ?? "NEXT",
+              getNextLabel(),
               style: TextStyle(
                 color: Colors.green,
               ),

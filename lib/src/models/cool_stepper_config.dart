@@ -38,15 +38,24 @@ class CoolStepperConfig {
   /// This is the textStyle for the subtitle text
   final TextStyle subtitleTextStyle;
 
-  const CoolStepperConfig({
-    this.backText,
-    this.nextText,
-    this.stepText,
-    this.ofText,
-    this.headerColor,
-    this.iconColor,
-    this.icon,
-    this.titleTextStyle,
-    this.subtitleTextStyle,
-  });
+  /// Progress labels that when supplied will override 'backText' and 'nextText', must equal the number of steps
+  final List<String> progLabels;
+
+  /// The text that should be displayed for the next button on the final step
+  ///
+  /// default is 'FINISH'
+  final String finalText;
+
+  const CoolStepperConfig(
+      {this.backText,
+      this.nextText,
+      this.stepText,
+      this.ofText,
+      this.headerColor,
+      this.iconColor,
+      this.icon,
+      this.titleTextStyle,
+      this.subtitleTextStyle,
+      this.progLabels,
+      this.finalText});
 }
