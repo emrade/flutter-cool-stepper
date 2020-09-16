@@ -21,7 +21,13 @@ class CoolStepper extends StatefulWidget {
     @required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
     this.config = const CoolStepperConfig(
-        backText: "PREV", nextText: "NEXT", stepText: "STEP", ofText: "OF", finalText: "FINISH", progLabels: null),
+      backText: "PREV",
+      nextText: "NEXT",
+      stepText: "STEP",
+      ofText: "OF",
+      finalText: "FINISH",
+      progLabels: null,
+    ),
   }) : super(key: key);
 
   @override

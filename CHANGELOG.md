@@ -1,3 +1,6 @@
+## [1.1.1] - 16/09/2020
+* Added 'progLabels' and 'finalText' property to CoolStepperConfig
+
 ## [1.1.0] - 20/07/2020
 * Added 'config' property to CoolStepper [Helps to customize stepper]
 

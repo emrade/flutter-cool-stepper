@@ -46,16 +46,17 @@ class CoolStepperConfig {
   /// default is 'FINISH'
   final String finalText;
 
-  const CoolStepperConfig(
-      {this.backText,
-      this.nextText,
-      this.stepText,
-      this.ofText,
-      this.headerColor,
-      this.iconColor,
-      this.icon,
-      this.titleTextStyle,
-      this.subtitleTextStyle,
-      this.progLabels,
-      this.finalText});
+  const CoolStepperConfig({
+    this.backText,
+    this.nextText,
+    this.stepText,
+    this.ofText,
+    this.headerColor,
+    this.iconColor,
+    this.icon,
+    this.titleTextStyle,
+    this.subtitleTextStyle,
+    this.progLabels,
+    this.finalText,
+  });
 }
