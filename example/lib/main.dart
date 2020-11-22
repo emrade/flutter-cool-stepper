@@ -106,7 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
       onCompleted: () {
         print("Steps completed!");
       },
-      showErrorSnackbar: true,
       steps: steps,
       config: CoolStepperConfig(
         backText: "PREV",

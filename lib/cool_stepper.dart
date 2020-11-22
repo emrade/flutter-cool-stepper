@@ -40,7 +40,8 @@ class CoolStepper extends StatefulWidget {
       stepText: "STEP",
       ofText: "OF",
       finalText: "FINISH",
-      progLabels: null,
+      backTextList: null,
+      nextTextList: null,
     ),
     this.showErrorSnackbar = false,
   }) : super(key: key);
@@ -134,30 +135,29 @@ class _CoolStepperState extends State<CoolStepper> {
 
     String getNextLabel() {
       String nextLabel;
-      if (widget.config.progLabels != null) {
-        if (_isLast(currentStep)) {
-          nextLabel = widget.config.finalText ?? 'FINISH';
-        } else {
-          nextLabel = widget.config.progLabels[currentStep + 1];
-        }
+      if (_isLast(currentStep)) {
+        nextLabel = widget.config.finalText ?? 'FINISH';
       } else {
-        nextLabel = widget.config.nextText ?? 'NEXT';
+        if (widget.config.nextTextList != null) {
+          nextLabel = widget.config.nextTextList[currentStep];
+        } else {
+          nextLabel = widget.config.nextText ?? 'NEXT';
+        }
       }
       return nextLabel;
     }
 
     String getPrevLabel() {
       String backLabel;
-      if (widget.config.progLabels != null) {
-        if (_isFirst(currentStep)) {
-          backLabel = '';
-        } else {
-          backLabel = widget.config.progLabels[currentStep - 1];
-        }
+      if (_isFirst(currentStep)) {
+        backLabel = '';
       } else {
-        backLabel = widget.config.backText ?? 'PREV';
+        if (widget.config.backTextList != null) {
+          backLabel = widget.config.backTextList[currentStep - 1];
+        } else {
+          backLabel = widget.config.backText ?? 'PREV';
+        }
       }
-
       return backLabel;
     }
 
