@@ -10,10 +10,24 @@ import 'package:flutter/material.dart';
 
 /// CoolStepper
 class CoolStepper extends StatefulWidget {
+  /// The steps of the stepper whose titles, subtitles, content always get shown.
+  ///
+  /// The length of [steps] must not change.
   final List<CoolStep> steps;
+
+  /// Actions to take when the final stepper is passed
   final VoidCallback onCompleted;
+
+  /// Padding for the content inside the stepper
   final EdgeInsetsGeometry contentPadding;
+
+  /// CoolStepper config
   final CoolStepperConfig config;
+
+  /// This determines if or not a snackbar displays your error message if validation fails
+  ///
+  /// default is false
+  final bool showErrorSnackbar;
 
   const CoolStepper({
     Key key,
@@ -28,6 +42,7 @@ class CoolStepper extends StatefulWidget {
       finalText: "FINISH",
       progLabels: null,
     ),
+    this.showErrorSnackbar = false,
   }) : super(key: key);
 
   @override
@@ -75,7 +90,11 @@ class _CoolStepperState extends State<CoolStepper> {
         widget.onCompleted();
       }
     } else {
-      // Do Nothing
+      // Show Error Snakbar
+      if (widget.showErrorSnackbar) {
+        final snackBar = SnackBar(content: Text(validation ?? "Error!"));
+        Scaffold.of(context).showSnackBar(snackBar);
+      }
     }
   }
 
