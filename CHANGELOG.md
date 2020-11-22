@@ -1,3 +1,7 @@
+## [1.1.3] - 22/11/2020
+
+- Code cleanup
+
 ## [1.1.2] - 22/11/2020
 
 - Removed 'progLabels' property from CoolStepperConfig
