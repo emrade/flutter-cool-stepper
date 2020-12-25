@@ -35,7 +35,6 @@ class CoolStepperView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: MediaQuery.of(context).size.width * 0.8,
                 child: Text(
                   step.title.toUpperCase(),
                   style: config.titleTextStyle ??
@@ -47,7 +46,7 @@ class CoolStepperView extends StatelessWidget {
                   maxLines: 2,
                 ),
               ),
-              SizedBox(width: 5.0),
+              Spacer(),
               Visibility(
                   visible: config.icon == null,
                   child: Icon(
