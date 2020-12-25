@@ -18,6 +18,9 @@ class CoolStepper extends StatefulWidget {
   /// Actions to take when the final stepper is passed
   final VoidCallback onCompleted;
 
+  /// Actions to take when cancelled
+  final VoidCallback onCancelled;
+
   /// Padding for the content inside the stepper
   final EdgeInsetsGeometry contentPadding;
 
@@ -33,10 +36,12 @@ class CoolStepper extends StatefulWidget {
     Key key,
     @required this.steps,
     @required this.onCompleted,
+    this.onCancelled,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
     this.config = const CoolStepperConfig(
       backText: "PREV",
       nextText: "NEXT",
+      cancelText: "CANCEL",
       stepText: "STEP",
       ofText: "OF",
       finalText: "FINISH",
@@ -163,7 +168,6 @@ class _CoolStepperState extends State<CoolStepper> {
 
     final buttons = Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           FlatButton(
             onPressed: onStepBack,
@@ -172,7 +176,19 @@ class _CoolStepperState extends State<CoolStepper> {
               style: TextStyle(color: Colors.grey),
             ),
           ),
+          Spacer(),
           counter,
+          Spacer(),
+          if (widget.onCancelled != null)
+            FlatButton(
+              onPressed: widget.onCancelled,
+              child: Text(
+                widget.config.cancelText ?? "CANCEL",
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+            ),
           FlatButton(
             onPressed: onStepNext,
             child: Text(

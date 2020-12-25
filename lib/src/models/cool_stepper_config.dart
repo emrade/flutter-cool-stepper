@@ -11,6 +11,11 @@ class CoolStepperConfig {
   /// default is 'NEXT'
   final String nextText;
 
+  /// The text that should be displayed for the cancel button
+  ///
+  /// default is 'CANCEL'
+  final String cancelText;
+
   /// The text that describes the progress
   ///
   /// default is 'STEP'
@@ -56,6 +61,7 @@ class CoolStepperConfig {
   const CoolStepperConfig({
     this.backText,
     this.nextText,
+    this.cancelText,
     this.stepText,
     this.ofText,
     this.headerColor,
