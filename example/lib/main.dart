@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cool Stepper',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -34,35 +34,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
-  String selectedRole = "Writer";
-  TextEditingController _nameCtrl = TextEditingController();
-  TextEditingController _emailCtrl = TextEditingController();
+  String? selectedRole = 'Writer';
+  final TextEditingController _nameCtrl = TextEditingController();
+  final TextEditingController _emailCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final List<CoolStep> steps = [
+    final steps = [
       CoolStep(
-        title: "Basic Information",
-        subtitle: "Please fill some of the basic information to get started",
+        title: 'Basic Information',
+        subtitle: 'Please fill some of the basic information to get started',
         content: Form(
           key: _formKey,
           child: Column(
             children: [
               _buildTextField(
-                labelText: "Name",
+                labelText: 'Name',
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return "Name is required";
+                  if (value!.isEmpty) {
+                    return 'Name is required';
                   }
                   return null;
                 },
                 controller: _nameCtrl,
               ),
               _buildTextField(
-                labelText: "Email Address",
+                labelText: 'Email Address',
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return "Email address is required";
+                  if (value!.isEmpty) {
+                    return 'Email address is required';
                   }
                   return null;
                 },
@@ -72,49 +72,50 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         validation: () {
-          if (!_formKey.currentState.validate()) {
-            return "Fill form correctly";
+          if (!_formKey.currentState!.validate()) {
+            return 'Fill form correctly';
           }
-          return null;
+          return 'null';
         },
       ),
       CoolStep(
-        title: "Select your role",
-        subtitle: "Choose a role that better defines you",
+        title: 'Select your role',
+        subtitle: 'Choose a role that better defines you',
         content: Container(
           child: Row(
             children: <Widget>[
               _buildSelector(
                 context: context,
-                name: "Writer",
+                name: 'Writer',
               ),
               SizedBox(width: 5.0),
               _buildSelector(
                 context: context,
-                name: "Editor",
+                name: 'Editor',
               ),
             ],
           ),
         ),
         validation: () {
-          return null;
+          return 'null';
         },
       ),
     ];
 
     final stepper = CoolStepper(
+      showErrorSnackbar: true,
       onCompleted: () {
-        print("Steps completed!");
+        print('Steps completed!');
       },
       steps: steps,
       config: CoolStepperConfig(
-        backText: "PREV",
+        backText: 'PREV',
       ),
     );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Container(
         child: stepper,
@@ -123,9 +124,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildTextField({
-    String labelText,
-    FormFieldValidator<String> validator,
-    TextEditingController controller,
+    String? labelText,
+    FormFieldValidator<String>? validator,
+    TextEditingController? controller,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
@@ -140,17 +141,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildSelector({
-    BuildContext context,
-    String name,
+    BuildContext? context,
+    required String name,
   }) {
-    bool isActive = name == selectedRole;
+    final isActive = name == selectedRole;
 
     return Expanded(
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: isActive ? Theme.of(context).primaryColor : null,
+          color: isActive ? Theme.of(context!).primaryColor : null,
           border: Border.all(
             width: 0,
           ),
@@ -160,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
           value: name,
           activeColor: Colors.white,
           groupValue: selectedRole,
-          onChanged: (String v) {
+          onChanged: (String? v) {
             setState(() {
               selectedRole = v;
             });

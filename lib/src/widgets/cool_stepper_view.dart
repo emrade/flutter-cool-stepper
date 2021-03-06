@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 class CoolStepperView extends StatelessWidget {
   final CoolStep step;
-  final VoidCallback onStepNext;
-  final VoidCallback onStepBack;
-  final EdgeInsetsGeometry contentPadding;
-  final CoolStepperConfig config;
+  final VoidCallback? onStepNext;
+  final VoidCallback? onStepBack;
+  final EdgeInsetsGeometry? contentPadding;
+  final CoolStepperConfig? config;
 
   const CoolStepperView({
-    Key key,
-    @required this.step,
+    Key? key,
+    required this.step,
     this.onStepNext,
     this.onStepBack,
     this.contentPadding,
@@ -24,7 +24,7 @@ class CoolStepperView extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 20.0),
       padding: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: config.headerColor ??
+        color: config!.headerColor ??
             Theme.of(context).primaryColor.withOpacity(0.1),
       ),
       child: Column(
@@ -38,7 +38,7 @@ class CoolStepperView extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Text(
                   step.title.toUpperCase(),
-                  style: config.titleTextStyle ??
+                  style: config!.titleTextStyle ??
                       TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
@@ -49,19 +49,20 @@ class CoolStepperView extends StatelessWidget {
               ),
               SizedBox(width: 5.0),
               Visibility(
-                  visible: config.icon == null,
-                  child: Icon(
-                    Icons.help_outline,
-                    size: 18,
-                    color: config.iconColor ?? Colors.black38,
-                  ),
-                  replacement: config.icon ?? Container())
+                visible: config!.icon == null,
+                replacement: config!.icon ?? SizedBox(),
+                child: Icon(
+                  Icons.help_outline,
+                  size: 18,
+                  color: config!.iconColor ?? Colors.black38,
+                ),
+              )
             ],
           ),
           SizedBox(height: 5.0),
           Text(
             step.subtitle,
-            style: config.subtitleTextStyle ??
+            style: config!.subtitleTextStyle ??
                 TextStyle(
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
