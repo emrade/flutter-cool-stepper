@@ -1,3 +1,10 @@
+## [1.1.5] - 06/03/2021
+
+- Support NullSafety
+- Add FlushBar
+- Code cleanup
+- Pedantic
+
 ## [1.1.3] - 22/11/2020
 
 - Code cleanup
