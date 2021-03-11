@@ -1,6 +1,6 @@
 name: cool_stepper
 description: CoolStepper is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding. 
-version: 1.1.6
+version: 1.1.7
 homepage: https://github.com/emrade/flutter-cool-stepper.git
 
 environment:
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  another_flushbar: ^1.10.13  
+  another_flushbar: ^1.10.15  
 
 dev_dependencies:
   flutter_test:

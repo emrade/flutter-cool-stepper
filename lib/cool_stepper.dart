@@ -98,8 +98,8 @@ class _CoolStepperState extends State<CoolStepper> {
         final flush = Flushbar(
           message: validation,
           flushbarStyle: FlushbarStyle.FLOATING,
-          margin: EdgeInsets.all(8),
-          borderRadius: 8,
+          margin: EdgeInsets.all(8.0),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
           icon: Icon(
             Icons.info_outline,
             size: 28.0,

@@ -1,3 +1,7 @@
+## [1.1.7] - 11/03/2021
+
+- Update flushbar
+
 ## [1.1.5] - 06/03/2021
 
 - Support NullSafety
