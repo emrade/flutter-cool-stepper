@@ -82,7 +82,10 @@ class CoolStepperView extends StatelessWidget {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [title, content],
+        children: [
+          config.hasHeader ? title : Container(),
+          content,
+        ],
       ),
     );
   }

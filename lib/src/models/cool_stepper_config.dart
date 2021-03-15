@@ -24,6 +24,9 @@ class CoolStepperConfig {
   /// This is the background color of the header
   final Color headerColor;
 
+  /// This flag can disable the header
+  final bool hasHeader;
+
   /// This is the color of the icon
   ///
   /// [This does not apply when icon is set]
@@ -59,6 +62,7 @@ class CoolStepperConfig {
     this.stepText,
     this.ofText,
     this.headerColor,
+    this.hasHeader = true,
     this.iconColor,
     this.icon,
     this.titleTextStyle,
