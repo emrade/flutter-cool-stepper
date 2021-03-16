@@ -124,12 +124,10 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
-    final counter = Container(
-      child: Text(
-        "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+    final counter = Text(
+      "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
       ),
     );
 
@@ -161,29 +159,33 @@ class _CoolStepperState extends State<CoolStepper> {
       return backLabel;
     }
 
-    final buttons = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          FlatButton(
-            onPressed: onStepBack,
-            child: Text(
-              getPrevLabel(),
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          counter,
-          FlatButton(
+    final buttons = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Flexible(
+          flex: 1,
+          fit: FlexFit.tight,
+          child: _isFirst(currentStep)
+              ? Container()
+              : FlatButton(
+                  onPressed: onStepBack,
+                  child: Text(getPrevLabel()),
+                ),
+        ),
+        Flexible(
+          flex: 2,
+          fit: FlexFit.tight,
+          child: Center(child: counter),
+        ),
+        Flexible(
+          flex: 1,
+          fit: FlexFit.tight,
+          child: FlatButton(
             onPressed: onStepNext,
-            child: Text(
-              getNextLabel(),
-              style: TextStyle(
-                color: Colors.green,
-              ),
-            ),
+            child: Text(getNextLabel()),
           ),
-        ],
-      ),
+        ),
+      ],
     );
 
     return Container(
