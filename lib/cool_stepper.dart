@@ -35,11 +35,11 @@ class CoolStepper extends StatefulWidget {
     @required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
     this.config = const CoolStepperConfig(
-      backText: "PREV",
-      nextText: "NEXT",
+      backBtn: OutlinedButton(child: Text('Back')),
+      nextBtn: OutlinedButton(child: Text('Next')),
       stepText: "STEP",
       ofText: "OF",
-      finalText: "FINISH",
+      finalBtn: OutlinedButton(child: Text('Finish')),
       backTextList: null,
       nextTextList: null,
     ),
@@ -131,29 +131,44 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
-    String getNextLabel() {
-      String nextLabel;
+    Widget getNextBtn() {
+      Widget nextLabel;
       if (_isLast(currentStep)) {
-        nextLabel = widget.config.finalText ?? 'FINISH';
+        nextLabel = widget.config.finalBtn ??
+            OutlinedButton(
+              child: Text('Finish'),
+              onPressed: onStepNext,
+            );
       } else {
         if (widget.config.nextTextList != null) {
-          nextLabel = widget.config.nextTextList[currentStep];
+          // nextLabel = widget.config.nextTextList[currentStep];
         } else {
-          nextLabel = widget.config.nextText ?? 'NEXT';
+          nextLabel = widget.config.nextBtn ??
+              OutlinedButton(
+                child: Text('Next'),
+                onPressed: onStepNext,
+              );
         }
       }
       return nextLabel;
     }
 
-    String getPrevLabel() {
-      String backLabel;
+    Widget getPrevBtn() {
+      Widget backLabel;
       if (_isFirst(currentStep)) {
-        backLabel = '';
+        backLabel = OutlinedButton(
+          child: Text('Back'),
+          onPressed: onStepBack,
+        );
       } else {
         if (widget.config.backTextList != null) {
-          backLabel = widget.config.backTextList[currentStep - 1];
+          // backLabel = widget.config.backTextList[currentStep - 1];
         } else {
-          backLabel = widget.config.backText ?? 'PREV';
+          backLabel = widget.config.backBtn ??
+              OutlinedButton(
+                child: Text('Back'),
+                onPressed: onStepBack,
+              );
         }
       }
       return backLabel;
@@ -165,12 +180,7 @@ class _CoolStepperState extends State<CoolStepper> {
         Flexible(
           flex: 1,
           fit: FlexFit.tight,
-          child: _isFirst(currentStep)
-              ? Container()
-              : FlatButton(
-                  onPressed: onStepBack,
-                  child: Text(getPrevLabel()),
-                ),
+          child: _isFirst(currentStep) ? Container() : getPrevBtn(),
         ),
         Flexible(
           flex: 2,
@@ -180,10 +190,7 @@ class _CoolStepperState extends State<CoolStepper> {
         Flexible(
           flex: 1,
           fit: FlexFit.tight,
-          child: FlatButton(
-            onPressed: onStepNext,
-            child: Text(getNextLabel()),
-          ),
+          child: getNextBtn(),
         ),
       ],
     );

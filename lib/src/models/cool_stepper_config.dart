@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 
 class CoolStepperConfig {
-  /// The text that should be displayed for the back button
+  /// The widget that should be displayed for the back button
   ///
-  /// default is 'BACK'
-  final String backText;
+  /// default is an OutlinedButton
+  final Widget backBtn;
 
-  /// The text that should be displayed for the next button
+  /// The widget that should be displayed for the next button
   ///
-  /// default is 'NEXT'
-  final String nextText;
+  /// default is an OutlinedButton
+  final Widget nextBtn;
 
   /// The text that describes the progress
   ///
@@ -51,24 +51,24 @@ class CoolStepperConfig {
   /// Must be one less than the number of steps since the 'finalText' attribute is able to set the value for the final step's next button
   final List<String> nextTextList;
 
-  /// The text that should be displayed for the next button on the final step
+  /// The widget that should be displayed for the next button on the final step
   ///
-  /// default is 'FINISH'
-  final String finalText;
+  /// default is an OutlinedButton
+  final Widget finalBtn;
 
   const CoolStepperConfig({
-    this.backText,
-    this.nextText,
+    this.backBtn,
+    this.nextBtn,
     this.stepText,
     this.ofText,
     this.headerColor,
-    this.hasHeader = true,
+    this.hasHeader = false,
     this.iconColor,
     this.icon,
     this.titleTextStyle,
     this.subtitleTextStyle,
     this.backTextList,
     this.nextTextList,
-    this.finalText,
+    this.finalBtn,
   });
 }
