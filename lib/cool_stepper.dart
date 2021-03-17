@@ -193,23 +193,8 @@ class _CoolStepperState extends State<CoolStepper> {
         counter,
         Expanded(child: SizedBox()),
         _isFirst(currentStep) ? Container() : getPrevBtn(),
+        SizedBox(width: widget.config.buttonGutter),
         getNextBtn(),
-
-        // Flexible(
-        //   flex: 1,
-        //   fit: FlexFit.tight,
-        //   child: _isFirst(currentStep) ? Container() : getPrevBtn(),
-        // ),
-        // Flexible(
-        //   flex: 2,
-        //   fit: FlexFit.tight,
-        //   child: Center(child: counter),
-        // ),
-        // Flexible(
-        //   flex: 1,
-        //   fit: FlexFit.tight,
-        //   child: getNextBtn(),
-        // ),
       ],
     );
 

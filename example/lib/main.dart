@@ -108,8 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       steps: steps,
       config: CoolStepperConfig(
-          // backText: "PREV",
-          ),
+        // backText: "PREV",
+        buttonGutter: 30.0,
+      ),
     );
 
     return Scaffold(

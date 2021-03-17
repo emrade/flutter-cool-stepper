@@ -60,6 +60,7 @@ class CoolStepperConfig {
   final Color dotColor;
   final double dotWidth;
   final double dotHeight;
+  final double buttonGutter;
 
   const CoolStepperConfig({
     this.backBtn,
@@ -79,5 +80,6 @@ class CoolStepperConfig {
     this.dotColor,
     this.dotWidth,
     this.dotHeight,
+    this.buttonGutter = 8.0,
   });
 }
