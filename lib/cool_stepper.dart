@@ -7,6 +7,7 @@ import 'package:cool_stepper/src/models/cool_step.dart';
 import 'package:cool_stepper/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 /// CoolStepper
 class CoolStepper extends StatefulWidget {
@@ -124,11 +125,23 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
-    final counter = Text(
-      "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
+    // final counter = Text(
+    //   "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
+    //   style: TextStyle(
+    //     fontWeight: FontWeight.bold,
+    //   ),
+    // );
+
+    final counter = SmoothPageIndicator(
+      controller: _controller,
+      count: widget.steps.length,
+      effect: ExpandingDotsEffect(
+        dotColor: widget.config.dotColor ?? Colors.grey,
+        dotWidth: widget.config.dotWidth ?? 8.0,
+        dotHeight: widget.config.dotHeight ?? 8.0,
+        activeDotColor: widget.config.activeDotColor ?? Colors.black,
       ),
+      onDotClicked: (index) {},
     );
 
     Widget getNextBtn() {

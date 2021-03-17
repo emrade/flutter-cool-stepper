@@ -56,6 +56,11 @@ class CoolStepperConfig {
   /// default is an OutlinedButton
   final Widget finalBtn;
 
+  final Color activeDotColor;
+  final Color dotColor;
+  final double dotWidth;
+  final double dotHeight;
+
   const CoolStepperConfig({
     this.backBtn,
     this.nextBtn,
@@ -70,5 +75,9 @@ class CoolStepperConfig {
     this.backTextList,
     this.nextTextList,
     this.finalBtn,
+    this.activeDotColor,
+    this.dotColor,
+    this.dotWidth,
+    this.dotHeight,
   });
 }
