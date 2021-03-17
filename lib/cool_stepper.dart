@@ -148,7 +148,7 @@ class _CoolStepperState extends State<CoolStepper> {
       Widget nextLabel;
       if (_isLast(currentStep)) {
         nextLabel = widget.config.finalBtn ??
-            OutlinedButton(
+            ElevatedButton(
               child: Text('Finish'),
               onPressed: onStepNext,
             );
@@ -157,7 +157,7 @@ class _CoolStepperState extends State<CoolStepper> {
           // nextLabel = widget.config.nextTextList[currentStep];
         } else {
           nextLabel = widget.config.nextBtn ??
-              OutlinedButton(
+              ElevatedButton(
                 child: Text('Next'),
                 onPressed: onStepNext,
               );
@@ -169,7 +169,7 @@ class _CoolStepperState extends State<CoolStepper> {
     Widget getPrevBtn() {
       Widget backLabel;
       if (_isFirst(currentStep)) {
-        backLabel = OutlinedButton(
+        backLabel = TextButton(
           child: Text('Back'),
           onPressed: onStepBack,
         );
@@ -178,7 +178,7 @@ class _CoolStepperState extends State<CoolStepper> {
           // backLabel = widget.config.backTextList[currentStep - 1];
         } else {
           backLabel = widget.config.backBtn ??
-              OutlinedButton(
+              TextButton(
                 child: Text('Back'),
                 onPressed: onStepBack,
               );
@@ -190,21 +190,26 @@ class _CoolStepperState extends State<CoolStepper> {
     final buttons = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Flexible(
-          flex: 1,
-          fit: FlexFit.tight,
-          child: _isFirst(currentStep) ? Container() : getPrevBtn(),
-        ),
-        Flexible(
-          flex: 2,
-          fit: FlexFit.tight,
-          child: Center(child: counter),
-        ),
-        Flexible(
-          flex: 1,
-          fit: FlexFit.tight,
-          child: getNextBtn(),
-        ),
+        counter,
+        Expanded(child: SizedBox()),
+        _isFirst(currentStep) ? Container() : getPrevBtn(),
+        getNextBtn(),
+
+        // Flexible(
+        //   flex: 1,
+        //   fit: FlexFit.tight,
+        //   child: _isFirst(currentStep) ? Container() : getPrevBtn(),
+        // ),
+        // Flexible(
+        //   flex: 2,
+        //   fit: FlexFit.tight,
+        //   child: Center(child: counter),
+        // ),
+        // Flexible(
+        //   flex: 1,
+        //   fit: FlexFit.tight,
+        //   child: getNextBtn(),
+        // ),
       ],
     );
 
