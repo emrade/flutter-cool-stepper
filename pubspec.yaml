@@ -9,7 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  smooth_page_indicator: ^0.2.1
+  smooth_page_indicator:
+    git:
+      url: https://github.com/Milad-Akarie/smooth_page_indicator.git
+      ref: 0.3.0-nullSafety
+  # smooth_page_indicator: ^0.2.1
 
 dev_dependencies:
   flutter_test:
