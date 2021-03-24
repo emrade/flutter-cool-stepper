@@ -7,9 +7,9 @@ class CoolStep {
   final String Function() validation;
 
   CoolStep({
-    @required this.title,
-    @required this.subtitle,
-    @required this.content,
-    @required this.validation,
+    required this.title,
+    required this.subtitle,
+    required this.content,
+    required this.validation,
   });
 }

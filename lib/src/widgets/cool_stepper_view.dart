@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 
 class CoolStepperView extends StatelessWidget {
   final CoolStep step;
-  final VoidCallback onStepNext;
-  final VoidCallback onStepBack;
-  final EdgeInsetsGeometry contentPadding;
+  final VoidCallback? onStepNext;
+  final VoidCallback? onStepBack;
+  final EdgeInsetsGeometry? contentPadding;
   final CoolStepperConfig config;
 
   const CoolStepperView({
-    Key key,
-    @required this.step,
+    Key? key,
+    required this.step,
     this.onStepNext,
     this.onStepBack,
     this.contentPadding,
-    this.config,
+    required this.config,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -31,19 +31,11 @@ class CoolStepper extends StatefulWidget {
   final bool showErrorSnackbar;
 
   const CoolStepper({
-    Key key,
-    @required this.steps,
-    @required this.onCompleted,
+    Key? key,
+    required this.steps,
+    required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
-    this.config = const CoolStepperConfig(
-      backBtn: OutlinedButton(child: Text('Back')),
-      nextBtn: OutlinedButton(child: Text('Next')),
-      stepText: "STEP",
-      ofText: "OF",
-      finalBtn: OutlinedButton(child: Text('Finish')),
-      backTextList: null,
-      nextTextList: null,
-    ),
+    required this.config,
     this.showErrorSnackbar = false,
   }) : super(key: key);
 
@@ -52,19 +44,19 @@ class CoolStepper extends StatefulWidget {
 }
 
 class _CoolStepperState extends State<CoolStepper> {
-  PageController _controller = PageController();
+  PageController? _controller = PageController();
 
   int currentStep = 0;
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     _controller = null;
     super.dispose();
   }
 
   switchToPage(int page) {
-    _controller.animateToPage(
+    _controller?.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
@@ -144,8 +136,8 @@ class _CoolStepperState extends State<CoolStepper> {
       onDotClicked: (index) {},
     );
 
-    Widget getNextBtn() {
-      Widget nextLabel;
+    Widget? getNextBtn() {
+      Widget? nextLabel;
       if (_isLast(currentStep)) {
         nextLabel = widget.config.finalBtn ??
             ElevatedButton(
@@ -166,8 +158,8 @@ class _CoolStepperState extends State<CoolStepper> {
       return nextLabel;
     }
 
-    Widget getPrevBtn() {
-      Widget backLabel;
+    Widget? getPrevBtn() {
+      Widget? backLabel;
       if (_isFirst(currentStep)) {
         backLabel = TextButton(
           child: Text('Back'),
@@ -192,9 +184,9 @@ class _CoolStepperState extends State<CoolStepper> {
       children: <Widget>[
         counter,
         Expanded(child: SizedBox()),
-        _isFirst(currentStep) ? Container() : getPrevBtn(),
+        _isFirst(currentStep) ? Container() : getPrevBtn()!,
         SizedBox(width: widget.config.buttonGutter),
-        getNextBtn(),
+        getNextBtn()!,
       ],
     );
 
