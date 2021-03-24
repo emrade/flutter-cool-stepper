@@ -44,19 +44,18 @@ class CoolStepper extends StatefulWidget {
 }
 
 class _CoolStepperState extends State<CoolStepper> {
-  PageController? _controller = PageController();
+  PageController _controller = PageController();
 
   int currentStep = 0;
 
   @override
   void dispose() {
-    _controller?.dispose();
-    _controller = null;
+    _controller.dispose();
     super.dispose();
   }
 
   switchToPage(int page) {
-    _controller?.animateToPage(
+    _controller.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
@@ -72,7 +71,7 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   onStepNext() {
-    String validation = widget.steps[currentStep].validation();
+    String? validation = widget.steps[currentStep].validation();
     if (validation == null) {
       if (!_isLast(currentStep)) {
         setState(() {
@@ -85,10 +84,10 @@ class _CoolStepperState extends State<CoolStepper> {
       }
     } else {
       // Show Error Snakbar
-      if (widget.showErrorSnackbar) {
-        final snackBar = SnackBar(content: Text(validation ?? "Error!"));
-        Scaffold.of(context).showSnackBar(snackBar);
-      }
+      // if (widget.showErrorSnackbar) {
+      //   final snackBar = SnackBar(content: Text(validation ?? "Error!"));
+      //   Scaffold.of(context).showSnackBar(snackBar);
+      // }
     }
   }
 
