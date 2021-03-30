@@ -11,7 +11,7 @@ import 'package:cool_stepper/cool_stepper.dart';
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>
+<img src="https://raw.githubusercontent.com/joaovvrodrigues/flutter-cool-stepper/master/screenshots/3.png" width="280"/><img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>
 
 ### Example
 
