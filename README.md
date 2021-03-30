@@ -28,6 +28,16 @@ CoolStepper(
 );
 ```
 
+So that the validation occurs normally returns a String "null", I made this modification to not change the structure of the code.
+```
+validation: () {
+          if (!_formKey.currentState!.validate()) {
+            return 'Fill form correctly';
+          }
+          return 'null';
+        },
+```
+        
 ### CoolStepper Class
 
 | Attribute   | Data type         | Description                                                                |                                     Default Value                                     |
