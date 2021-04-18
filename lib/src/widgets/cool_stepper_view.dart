@@ -15,11 +15,11 @@ class CoolStepperView extends StatelessWidget {
     this.onStepNext,
     this.onStepBack,
     this.contentPadding,
-    this.config,
+    required this.config,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final title = Container(
+    final title = config!.isHeaderEnabled ? Container(
       width: double.infinity,
       margin: EdgeInsets.only(bottom: 20.0),
       padding: EdgeInsets.all(20.0),
@@ -71,7 +71,7 @@ class CoolStepperView extends StatelessWidget {
           )
         ],
       ),
-    );
+    ) : SizedBox();
 
     final content = Expanded(
       child: SingleChildScrollView(

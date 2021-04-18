@@ -53,6 +53,8 @@ class CoolStepperConfig {
   /// default is 'FINISH'
   final String? finalText;
 
+  final bool isHeaderEnabled;
+
   const CoolStepperConfig({
     this.backText,
     this.nextText,
@@ -66,5 +68,6 @@ class CoolStepperConfig {
     this.backTextList,
     this.nextTextList,
     this.finalText,
+    this.isHeaderEnabled = true
   });
 }
