@@ -5,11 +5,13 @@ class CoolStep {
   final String subtitle;
   final Widget content;
   final String Function() validation;
+  final bool isHeaderEnable;
 
   CoolStep({
     required this.title,
     required this.subtitle,
     required this.content,
     required this.validation,
+    this.isHeaderEnable = true
   });
 }
