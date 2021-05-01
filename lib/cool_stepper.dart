@@ -94,7 +94,7 @@ class _CoolStepperState extends State<CoolStepper> {
       // Show Error Snakbar
       if (widget.showErrorSnackbar) {
         final snackBar = SnackBar(content: Text(validation ?? "Error!"));
-        Scaffold.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
   }
@@ -165,7 +165,7 @@ class _CoolStepperState extends State<CoolStepper> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: onStepBack,
             child: Text(
               getPrevLabel(),
@@ -173,7 +173,7 @@ class _CoolStepperState extends State<CoolStepper> {
             ),
           ),
           counter,
-          FlatButton(
+          TextButton(
             onPressed: onStepNext,
             child: Text(
               getNextLabel(),
