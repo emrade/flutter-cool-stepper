@@ -11,7 +11,7 @@ import 'package:cool_stepper/cool_stepper.dart';
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>
+<img src="https://raw.githubusercontent.com/joaovvrodrigues/flutter-cool-stepper/master/screenshots/3.png" width="280"/><img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>
 
 ### Example
 
@@ -28,11 +28,21 @@ CoolStepper(
 );
 ```
 
+So that the validation occurs normally returns a String "null", I made this modification to not change the structure of the code.
+```
+validation: () {
+          if (!_formKey.currentState!.validate()) {
+            return 'Fill form correctly';
+          }
+          return 'null';
+        },
+```
+        
 ### CoolStepper Class
 
 | Attribute   | Data type         | Description                                                                |                                     Default Value                                     |
 | :---------- | :---------------- | :------------------------------------------------------------------------- | :-----------------------------------------------------------------------------------: |
-| onCompleted | Void Function()   | @required - A function that is triggers when all steps have been completed |                                         Null                                          |
+| onCompleted | Void Function()   | @required - A function that is triggers when all steps have been completed |                                         "Null"                                          |
 | steps       | List<CoolStep>    | @required                                                                  |                                         Null                                          |
 | config      | CoolStepperConfig | Helps to customize your stepper                                            | CoolStepperConfig(backText: "BACK", nextText: "NEXT", stepText: "STEP", ofText: "OF") |
 
