@@ -111,6 +111,8 @@ class _CoolStepperState extends State<CoolStepper> {
         flush.show(context);
         // final snackBar = SnackBar(content: Text(validation));
         // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+//         final snackBar = SnackBar(content: Text(validation ?? "Error!"));
+//         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
   }
