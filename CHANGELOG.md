@@ -1,3 +1,7 @@
+## [1.2.1] - 01/05/2021
+
+- Updated README
+
 ## [1.2.0] - 01/05/2021
 
 - Support NullSafety
