@@ -36,15 +36,7 @@ class CoolStepper extends StatefulWidget {
     required this.steps,
     required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
-    this.config = const CoolStepperConfig(
-      backText: 'PREV',
-      nextText: 'NEXT',
-      stepText: 'STEP',
-      ofText: 'OF',
-      finalText: 'FINISH',
-      backTextList: null,
-      nextTextList: null,
-    ),
+    this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
   }) : super(key: key);
 
@@ -81,8 +73,10 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   void onStepNext() {
-    final validation = widget.steps[currentStep].validation();
-    if (validation == 'null') {
+    final validation = widget.steps[currentStep].validation!();
+
+    /// [validation] is null, no validation rule
+    if (validation == null) {
       if (!_isLast(currentStep)) {
         setState(() {
           currentStep++;
@@ -93,7 +87,7 @@ class _CoolStepperState extends State<CoolStepper> {
         widget.onCompleted();
       }
     } else {
-      // Show Error Snakbar
+      /// [showErrorSnackbar] is true, Show error snackbar rule
       if (widget.showErrorSnackbar) {
         final flush = Flushbar(
           message: validation,
@@ -109,10 +103,9 @@ class _CoolStepperState extends State<CoolStepper> {
           leftBarIndicatorColor: Theme.of(context).primaryColor,
         );
         flush.show(context);
+
         // final snackBar = SnackBar(content: Text(validation));
         // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-//         final snackBar = SnackBar(content: Text(validation ?? "Error!"));
-//         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
   }

@@ -1,25 +1,19 @@
 PODS:
-  - another_flushbar (0.0.1):
-    - Flutter
   - Flutter (1.0.0)
   - path_provider (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - another_flushbar (from `.symlinks/plugins/another_flushbar/ios`)
   - Flutter (from `Flutter`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
 
 EXTERNAL SOURCES:
-  another_flushbar:
-    :path: ".symlinks/plugins/another_flushbar/ios"
   Flutter:
     :path: Flutter
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
 
 SPEC CHECKSUMS:
-  another_flushbar: 3bb0a50768cc547ba9dd82cbb92129bf5ca7440c
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
 

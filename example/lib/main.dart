@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cool Stepper',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (!_formKey.currentState!.validate()) {
             return 'Fill form correctly';
           }
-          return 'null';
+          return null;
         },
       ),
       CoolStep(
@@ -97,13 +97,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         validation: () {
-          return 'null';
+          return null;
         },
       ),
     ];
 
     final stepper = CoolStepper(
-      showErrorSnackbar: true,
+      showErrorSnackbar: false,
       onCompleted: () {
         print('Steps completed!');
       },

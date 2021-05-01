@@ -56,10 +56,10 @@ class CoolStepperConfig {
   final bool isHeaderEnabled;
 
   const CoolStepperConfig({
-    this.backText,
-    this.nextText,
-    this.stepText,
-    this.ofText,
+    this.backText = 'PRE',
+    this.nextText = 'NEXT',
+    this.stepText = 'STEP',
+    this.ofText = 'OF',
     this.headerColor,
     this.iconColor,
     this.icon,
@@ -67,7 +67,7 @@ class CoolStepperConfig {
     this.subtitleTextStyle,
     this.backTextList,
     this.nextTextList,
-    this.finalText,
-    this.isHeaderEnabled = true
+    this.finalText = 'FINISH',
+    this.isHeaderEnabled = true,
   });
 }

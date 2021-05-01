@@ -34,7 +34,7 @@ validation: () {
           if (!_formKey.currentState!.validate()) {
             return 'Fill form correctly';
           }
-          return 'null';
+          return null;
         },
 ```
         
