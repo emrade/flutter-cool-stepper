@@ -72,8 +72,8 @@ class _CoolStepperState extends State<CoolStepper> {
     return widget.steps.length - 1 == index;
   }
 
-  void onStepNext() {
-    final validation = widget.steps[currentStep].validation!();
+  Future<void> onStepNext() async {
+    final validation = await widget.steps[currentStep].validation!();
 
     /// [validation] is null, no validation rule
     if (validation == null) {
@@ -82,7 +82,7 @@ class _CoolStepperState extends State<CoolStepper> {
           currentStep++;
         });
         FocusScope.of(context).unfocus();
-        switchToPage(currentStep);
+        await switchToPage(currentStep);
       } else {
         widget.onCompleted();
       }
@@ -102,7 +102,7 @@ class _CoolStepperState extends State<CoolStepper> {
           duration: Duration(seconds: 2),
           leftBarIndicatorColor: Theme.of(context).primaryColor,
         );
-        flush.show(context);
+        await flush.show(context);
 
         // final snackBar = SnackBar(content: Text(validation));
         // ScaffoldMessenger.of(context).showSnackBar(snackBar);
