@@ -74,6 +74,7 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   Future<void> onStepNext() async {
+    // final context
     final validation = await widget.steps[currentStep].validation!();
 
     /// [validation] is null, no validation rule
@@ -82,12 +83,16 @@ class _CoolStepperState extends State<CoolStepper> {
         setState(() {
           currentStep++;
         });
-        FocusScope.of(context).unfocus();
+
+        if (mounted) FocusScope.of(context).unfocus();
+
         await switchToPage(currentStep);
       } else {
         widget.onCompleted();
       }
     } else {
+      if (!mounted) return;
+
       /// [showErrorSnackbar] is true, Show error snackbar rule
       if (widget.showErrorSnackbar) {
         final flush = Flushbar(

@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title!),
       ),
-      body: Container(
+      body: SafeArea(
         child: stepper,
       ),
     );

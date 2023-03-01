@@ -1,5 +1,6 @@
 name: cool_stepper
-description: CoolStepper is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
+description: CoolStepper is a widget that displays a step by step sequence of
+  operations. it could be helpful for a form wizard or onboarding.
 version: 1.2.1
 homepage: https://github.com/emrade/flutter-cool-stepper.git
 
@@ -7,15 +8,14 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  another_flushbar: ^1.12.29
   flutter:
     sdk: flutter
 
-  another_flushbar: ^1.10.18
-
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
