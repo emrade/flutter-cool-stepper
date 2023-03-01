@@ -1,5 +1,4 @@
 import 'package:cool_stepper/cool_stepper.dart';
-import 'package:cool_stepper/src/models/cool_step.dart';
 import 'package:flutter/material.dart';
 
 class CoolStepperView extends StatelessWidget {
@@ -35,12 +34,12 @@ class CoolStepperView extends StatelessWidget {
                 Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: Text(
                           step.title.toUpperCase(),
                           style: config!.titleTextStyle ??
-                              TextStyle(
+                              const TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black38,
@@ -48,10 +47,10 @@ class CoolStepperView extends StatelessWidget {
                           maxLines: 2,
                         ),
                       ),
-                      SizedBox(width: 5.0),
+                      const SizedBox(width: 5.0),
                       Visibility(
                         visible: config!.icon == null,
-                        replacement: config!.icon ?? SizedBox(),
+                        replacement: config!.icon ?? const SizedBox(),
                         child: Icon(
                           Icons.help_outline,
                           size: 18,
@@ -59,11 +58,11 @@ class CoolStepperView extends StatelessWidget {
                         ),
                       )
                     ]),
-                SizedBox(height: 5.0),
+                const SizedBox(height: 5.0),
                 Text(
                   step.subtitle,
                   style: config!.subtitleTextStyle ??
-                      TextStyle(
+                      const TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
@@ -72,7 +71,7 @@ class CoolStepperView extends StatelessWidget {
               ],
             ),
           )
-        : SizedBox();
+        : const SizedBox();
 
     final content = Expanded(
       child: SingleChildScrollView(
@@ -81,11 +80,9 @@ class CoolStepperView extends StatelessWidget {
       ),
     );
 
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [title, content],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [title, content],
     );
   }
 }

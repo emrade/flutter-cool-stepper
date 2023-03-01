@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,24 +20,26 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: 'Cool Stepper'),
+      home: const MyHomePage(title: 'Cool Stepper'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
-
   final String? title;
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
+
   String? selectedRole = 'Writer';
+
   final TextEditingController _nameCtrl = TextEditingController();
+
   final TextEditingController _emailCtrl = TextEditingController();
 
   @override
@@ -81,20 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
       CoolStep(
         title: 'Select your role',
         subtitle: 'Choose a role that better defines you',
-        content: Container(
-          child: Row(
-            children: <Widget>[
-              _buildSelector(
-                context: context,
-                name: 'Writer',
-              ),
-              SizedBox(width: 5.0),
-              _buildSelector(
-                context: context,
-                name: 'Editor',
-              ),
-            ],
-          ),
+        content: Row(
+          children: <Widget>[
+            _buildSelector(
+              context: context,
+              name: 'Writer',
+            ),
+            const SizedBox(width: 5.0),
+            _buildSelector(
+              context: context,
+              name: 'Editor',
+            ),
+          ],
         ),
         validation: () {
           return null;
@@ -105,10 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
     final stepper = CoolStepper(
       showErrorSnackbar: false,
       onCompleted: () {
-        print('Steps completed!');
+        debugPrint('Steps completed!');
       },
       steps: steps,
-      config: CoolStepperConfig(
+      config: const CoolStepperConfig(
         backText: 'PREV',
       ),
     );
@@ -148,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Expanded(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: isActive ? Theme.of(context!).primaryColor : null,

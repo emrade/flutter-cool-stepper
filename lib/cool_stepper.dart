@@ -41,7 +41,7 @@ class CoolStepper extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CoolStepperState createState() => _CoolStepperState();
+  State<CoolStepper> createState() => _CoolStepperState();
 }
 
 class _CoolStepperState extends State<CoolStepper> {
@@ -62,6 +62,7 @@ class _CoolStepperState extends State<CoolStepper> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
+    return null;
   }
 
   bool _isFirst(int index) {
@@ -92,14 +93,14 @@ class _CoolStepperState extends State<CoolStepper> {
         final flush = Flushbar(
           message: validation,
           flushbarStyle: FlushbarStyle.FLOATING,
-          margin: EdgeInsets.all(8.0),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          margin: const EdgeInsets.all(8.0),
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           icon: Icon(
             Icons.info_outline,
             size: 28.0,
             color: Theme.of(context).primaryColor,
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
           leftBarIndicatorColor: Theme.of(context).primaryColor,
         );
         flush.show(context);
@@ -124,7 +125,7 @@ class _CoolStepperState extends State<CoolStepper> {
     final content = Expanded(
       child: PageView(
         controller: _controller,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: widget.steps.map((step) {
           return CoolStepperView(
             step: step,
@@ -135,12 +136,10 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
-    final counter = Container(
-      child: Text(
-        "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+    final counter = Text(
+      "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
       ),
     );
 
@@ -172,35 +171,31 @@ class _CoolStepperState extends State<CoolStepper> {
       return backLabel;
     }
 
-    final buttons = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          TextButton(
-            onPressed: onStepBack,
-            child: Text(
-              getPrevLabel(),
-              style: TextStyle(color: Colors.grey),
+    final buttons = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        TextButton(
+          onPressed: onStepBack,
+          child: Text(
+            getPrevLabel(),
+            style: const TextStyle(color: Colors.grey),
+          ),
+        ),
+        counter,
+        TextButton(
+          onPressed: onStepNext,
+          child: Text(
+            getNextLabel(),
+            style: const TextStyle(
+              color: Colors.green,
             ),
           ),
-          counter,
-          TextButton(
-            onPressed: onStepNext,
-            child: Text(
-              getNextLabel(),
-              style: TextStyle(
-                color: Colors.green,
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
 
-    return Container(
-      child: Column(
-        children: [content, buttons],
-      ),
+    return Column(
+      children: [content, buttons],
     );
   }
 }
