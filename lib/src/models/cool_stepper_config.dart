@@ -55,6 +55,10 @@ class CoolStepperConfig {
 
   final bool isHeaderEnabled;
 
+  /// This can be set to True when you'd like to disable the next button
+  /// and show a circular progress indicator in the button
+  final bool isNextButtonLoading;
+
   const CoolStepperConfig({
     this.backText = 'PRE',
     this.nextText = 'NEXT',
@@ -69,5 +73,6 @@ class CoolStepperConfig {
     this.nextTextList,
     this.finalText = 'FINISH',
     this.isHeaderEnabled = true,
+    this.isNextButtonLoading = false,
   });
 }
