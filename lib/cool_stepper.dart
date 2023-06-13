@@ -183,7 +183,7 @@ class _CoolStepperState extends State<CoolStepper> {
           onPressed: onStepBack,
           child: Text(
             getPrevLabel(),
-            style: widget.config.buttonsTextStyle ??
+            style: widget.config.backButtonTextStyle ??
                 TextStyle(color: Colors.grey),
           ),
         ),
@@ -192,7 +192,7 @@ class _CoolStepperState extends State<CoolStepper> {
           onPressed: onStepNext,
           child: Text(
               getNextLabel(),
-              style: widget.config.buttonsTextStyle ??
+              style: widget.config.nextButtonTextStyle ??
                   TextStyle(
                     color: Colors.green,
               ),
