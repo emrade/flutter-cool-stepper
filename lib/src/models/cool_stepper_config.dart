@@ -38,6 +38,9 @@ class CoolStepperConfig {
   /// This is the textStyle for the subtitle text
   final TextStyle? subtitleTextStyle;
 
+  /// This is the textStyle for the buttons
+  final TextStyle? buttonsTextStyle;
+
   /// A List of string that when supplied will override 'backText'
   ///
   /// Must be one less than the number of steps since for the first step, the backText won't be visible
@@ -65,6 +68,7 @@ class CoolStepperConfig {
     this.icon,
     this.titleTextStyle,
     this.subtitleTextStyle,
+    this.buttonsTextStyle,
     this.backTextList,
     this.nextTextList,
     this.finalText = 'FINISH',
